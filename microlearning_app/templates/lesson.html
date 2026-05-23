@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container" style="max-width: 550px;">
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+            {% for category, message in messages %}
+
+                <div class="alert-box alert-{{ category }}">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+    {% endwith %}
+
+    <div class="card" style="margin-bottom: 20px;">
+
+        <h2 style="
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 15px;
+        ">
+            {{ lesson.title }}
+        </h2>
+
+        <p style="
+            color: #444;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        ">
+            {{ lesson.content }}
+        </p>
+
+        <a
+            href="{{ lesson.source_url }}"
+            target="_blank"
+            class="btn btn-secondary"
+            style="margin-bottom: 10px;"
+        >
+            📚 Читать статью полностью
+        </a>
+
+    </div>
+
+    <a
+        href="/complete/{{ lesson.title }}"
+        class="btn btn-success btn-block"
+        style="margin-bottom: 12px;"
+    >
+        ✅ Отметить как изученное
+    </a>
+
+    <a
+        href="/progress"
+        class="btn btn-warning btn-block"
+        style="margin-bottom: 12px;"
+    >
+        📈 Мой прогресс
+    </a>
+
+    <a
+        href="/"
+        class="btn btn-secondary btn-block"
+    >
+        🏠 На главную
+    </a>
+
+</div>
+
+{% endblock %}

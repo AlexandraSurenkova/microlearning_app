@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width: 550px;">
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert-box alert-{{ category }}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h1 style="text-align: center; margin-bottom: 25px; font-weight: bold;">📊 Прогресс обучения</h1>
+    
+    {% if progress_data %}
+    <!-- Список изученного с фиксированной прокруткой -->
+    <div class="custom-list scroll-box">
+        {% for title, completed, viewed_at in progress_data %}
+        <div class="custom-list-item">
+            <div>
+                <h6 style="font-size: 15px; font-weight: bold; margin: 0 0 5px 0;">{{ title }}</h6>
+                <small style="color: #6c757d; font-size: 13px;">📅 {{ viewed_at.strftime('%d.%m.%Y в %H:%M') }}</small>
+            </div>
+            <span class="badge-success">Изучено</span>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div style="background-color: #e8f4fd; color: #1d6fa5; padding: 25px; border-radius: 12px; text-align: center; font-weight: 500; margin-bottom: 25px; border: 1px solid #d2e9f9;">
+         Вы пока не изучили ни одной страницы. Самое время начать!
+    </div>
+    {% endif %}
+    
+    <a href="/" class="btn btn-secondary btn-block" style="margin-top:0;">На главную</a>
+</div>
+{% endblock %}

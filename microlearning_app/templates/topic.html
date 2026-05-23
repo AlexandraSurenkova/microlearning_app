@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width: 550px;">
+    <h1 style="font-weight: bold; margin-bottom: 5px;">{{ topic.title }}</h1>
+    <p style="color: #6c757d; font-size: 15px; margin-bottom: 25px;">{{ topic.description }}</p>
+    
+    <h3 style="font-size: 16px; font-weight: bold; color: #4f46e5; margin-bottom: 15px;">Список доступных страниц:</h3>
+    
+    <div class="custom-list">
+        {% for lesson in lessons %}
+        <div class="custom-list-item">
+            <span style="font-weight: 600; color: #333;">{{ lesson.title }}</span>
+            <a href="/lesson/{{ lesson.id }}" class="btn btn-sm">Читать</a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <a href="/" class="btn btn-secondary btn-block"> На главную</a>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width: 550px;">
+    <div class="hero">
+        <h1>📖 Микрообучение</h1>
+        <p>Изучайте по одной теме ежедневно.</p>
+        
+        <a href="/daily" class="btn btn-block">🎯 Получить тему дня</a>
+        
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="/progress" class="btn btn-secondary btn-block" style="margin-top:0;">📊 Мой прогресс</a>
+            <a href="/help" class="btn btn-info btn-block" style="margin-top:0; color: white;">❓ Справка (Help)</a>
+            <a href="/shutdown" class="btn btn-info btn-block" style="margin-top:0; color: white;">❌ Выход</a>
+        </div>
+    </div>
+    
+    
+    <div class="custom-list">
+        {% for topic in topics %}
+        <div class="custom-list-item">
+            <span style="font-weight: bold; color: #4f46e5;">{{ topic.title }}</span>
+            <a href="/topic/{{ topic.id }}" class="btn btn-sm" style="background: #1cc88a;">Открыть</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

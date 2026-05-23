@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>MicroLearning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="navbar">
+    <div>
+        <strong>MicroLearning App</strong>
+    </div>
+
+    <div>
+        <a href="/">Главная</a>
+        <a href="/daily">Тема дня</a>
+        <a href="/progress">Прогресс</a>
+    </div>
+</div>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
